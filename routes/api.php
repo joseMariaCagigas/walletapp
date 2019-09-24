@@ -18,3 +18,5 @@ use Symfony\Component\Routing;
 //    return $request->user();
 //});
 Route::get('/wallet', 'WalletControl@index');
+Route::post('/transfer', 'TrasnferControl@store');
+

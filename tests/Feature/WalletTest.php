@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Transfer;
 use App\Wallet;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class WalletTest extends TestCase
@@ -19,7 +18,7 @@ class WalletTest extends TestCase
     public function testGetWallet()
     {
         $wallet = factory(Wallet::class)->create();
-        $transfers = factory(Transfer::class, 3)->create([
+        $transfer = factory(Transfer::class, 3)->create([
            'wallet_id' => $wallet->id
         ]);
 
