@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Symfony\Component\Routing;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +13,6 @@ use Symfony\Component\Routing;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-Route::get('/wallet', 'WalletControl@index');
-Route::post('/transfer', 'TrasnferControl@store');
-
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
