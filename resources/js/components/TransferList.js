@@ -1,16 +1,18 @@
 import React from 'react'
 
-const TransferList = () => (
+const TransferList = ({transfers}) => (
     <table className="table table-striped">
         <tbody>
         <tr>
             <th>Concepto</th>
             <th>Cantidad</th>
         </tr>
-        <tr>
-            <td>Ejemplo</td>
-            <td>1200.00</td>
-        </tr>
+        { transfers.map((transfer) => (
+            <tr key={ transfer.id }>
+                <td>{ transfer.description }</td>
+                <td>{ transfer.amount }</td>
+            </tr>
+        ))}
         </tbody>
     </table>
 )
