@@ -1,13 +1,13 @@
 import React from 'react'
 
-const TransferForm = () => (
-    <form className="form-inline justify-content-center">
+const TransferForm = ({form, onChange, onSubmit}) => (
+    <form className="form-inline justify-content-center" onSubmit={ onSubmit }>
         <div className="form-group">
             <input type="text" className="form-control" id="description" name="description"
-                   aria-describedby="emailHelp" placeholder="Description"/>
+                   aria-describedby="emailHelp" placeholder="Description" value={ form.description } onChange={ onChange }/>
         </div>
         <div className="form-group">
-            <input type="text" className="form-control" id="amount" name="amount"/>
+            <input type="text" className="form-control" id="amount" name="amount" value={ form.amount } onChange={ onChange }/>
         </div>
         <div className="form-group">
             <button type="submit" className="btn btn-primary">Add</button>
