@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import TransferForm from './TransferForm';
 import TransferList from './TransferList'
+import url from '../url'
 
 export default class Example extends Component {
 
@@ -22,10 +23,33 @@ export default class Example extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault();
-        console.log('sending...')
+        try {
+            let config = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.state.form)
+            }
+
+            let res = await fetch(`${url}/api/transfer`, config);
+            let data = await  res.json();
+
+            this.setState({
+                transfers: this.state.transfers.concat(data),
+                money: this.state.money + (parseInt(data.amount))
+            })
+
+        } catch (error) {
+            this.setState({
+                error
+            })
+        }
     }
+
     handleChange(e){
         //console.log(e.target.value);
         this.setState({
@@ -38,7 +62,7 @@ export default class Example extends Component {
 
     async componentDidMount(){
         try {
-            let res = await fetch('http://127.0.0.1:8000/api/wallet');
+            let res = await fetch(`${url}/api/wallet`);
             let data = await  res.json();
             this.setState({
                 money: data.money,
