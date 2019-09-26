@@ -66996,6 +66996,7 @@ var TransferForm = function TransferForm(_ref) {
     className: "form-control",
     id: "description",
     name: "description",
+    required: true,
     "aria-describedby": "emailHelp",
     placeholder: "Description",
     value: form.description,
@@ -67007,6 +67008,7 @@ var TransferForm = function TransferForm(_ref) {
     className: "form-control",
     id: "amount",
     name: "amount",
+    required: true,
     value: form.amount,
     onChange: onChange
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

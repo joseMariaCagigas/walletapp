@@ -61,7 +61,7 @@ export default class Example extends Component {
                     <div className="col-md-12 mb-2">
                         <TransferForm
                             form = { this.state.form }
-                            onChange={ this.handleChange}
+                            onChange={ this.handleChange }
                             onSubmit={ this.handleSubmit }
                         />
                     </div>
